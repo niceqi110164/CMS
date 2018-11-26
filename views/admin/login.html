@@ -119,7 +119,7 @@
 <!-- basic scripts -->
 
 <script>
-    let code = document.querySelectorAll(".code")[0];
+    let code = document.querySelector("#code");
     let username = document.querySelector("#username");
     let password = document.querySelector("#password");
     let loginForm = document.querySelector("#loginForm");
@@ -134,11 +134,12 @@
         this.src = "{{__HOST__}}/admin/login/code?t=" + t;
     }
 
-    loginForm.onsubmit(()=>{
-        if(username.value="" || password.value="" || code.value=""){
-            alert("用户名&密码&验证码不能为空")
+    loginForm.onsubmit = function(){
+        if( username.value =="" || password.value=="" || code.value =="" ){
+            alert("用户名或密码或验证码错误");
+            return false;
         }
-    })
+    }
 </script>
 
 </body>
