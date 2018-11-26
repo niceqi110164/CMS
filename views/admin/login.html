@@ -78,9 +78,9 @@
 
                                             <label class="block clearfix">
                                                 <span class="block input-icon input-icon-right">
-                                                    <input id="code" type="text" name="code" class="form-control"
+                                                    <input  type="text" name="code" class="form-control"
                                                            placeholder="验证吗" style="width:200px;float:left;"/>
-                                                    <img class="code" style="float:right;" src="{{__HOST__}}/admin/login/code" alt="">
+                                                    <img id="code" style="float:right;" src="{{__HOST__}}/admin/login/code" alt="">
                                                 </span>
                                             </label>
 
@@ -124,12 +124,15 @@
     let password = document.querySelector("#password");
     let loginForm = document.querySelector("#loginForm");
 
+    console.log(code);
+
     code.addEventListener("click",reStartCode);
     /**
      * @method: 改变验证码url方法
      * t : str  事件戳
      * */
     function reStartCode(){
+
         let t = new Date().getTime();
         this.src = "{{__HOST__}}/admin/login/code?t=" + t;
     }
