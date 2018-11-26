@@ -12,19 +12,19 @@ router.get("/", async (ctx)=>{
 
 
 router.post('/doLogin', async (ctx)=>{
+    let code = ctx.request.body.code;
     let json = {};
     json.username = ctx.request.body.username;
     json.password = tools.md5(ctx.request.body.password);
-    let code = ctx.request.body.code;
 
 
-    console.log(code);
-    console.log(ctx.session.code);
+    //console.log(code);
+    // console.log(ctx.session.code);
 
     //判断验证码
     if(code.toLocaleLowerCase() == ctx.session.code.toLocaleLowerCase()){
         let findResult = await DB.find("user",json);
-        console.log(findResult);
+        //console.log(findResult);
         if(findResult.length>0){
             ctx.session.userinfo = findResult[0];
             ctx.redirect(ctx.state.__HOST__+"/admin");
