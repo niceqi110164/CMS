@@ -7,6 +7,7 @@ let router = require("koa-router")(),
     login = require('./admin/login.js'),
     url = require('url'),
     code = require('svg-captcha'),
+    articlecate = require('./admin/articlecate.js'),
     index = require('./admin/index.js');
 
 
@@ -19,6 +20,14 @@ router.use(async (ctx,next)=>{
     let pathname = url.parse(ctx.request.url).pathname;
     pathname = pathname.substring(1);
     //console.log(pathname);
+
+    //左侧菜单选中
+    let splitUrl = pathname.split('/');
+    ctx.state.G = {
+        url : splitUrl,
+        //userinfo:ctx.session.userinfo
+        prevPage:ctx.request.headers['referer']   /*上一页的地址*/
+    };
 
     //判断权限
     if(ctx.session.userinfo){
@@ -34,7 +43,7 @@ router.use(async (ctx,next)=>{
 
 router.use(index);
 
-// router.use('/user', user);
+router.use('/articlecate', articlecate);
 router.use('/manager', manager);
 router.use('/login', login);
 // router.use('/news', news);
