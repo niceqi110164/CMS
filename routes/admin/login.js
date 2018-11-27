@@ -23,9 +23,16 @@ router.post('/doLogin', async (ctx)=>{
 
     //判断验证码
     if(code.toLocaleLowerCase() == ctx.session.code.toLocaleLowerCase()){
-        let findResult = await DB.find("user",json);
+        let findResult = await DB.find("userInfo",json);
         //console.log(findResult);
         if(findResult.length>0){
+            //更新登录时间
+            await DB.update(
+                "userInfo",
+                {"_id":DB.getObjectID(findResult[0]._id)},
+                {"last_time":new Date()}
+            );
+            //把用户保存到session
             ctx.session.userinfo = findResult[0];
             ctx.redirect(ctx.state.__HOST__+"/admin");
         }else{
