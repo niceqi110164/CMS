@@ -5,14 +5,17 @@ let  Koa = require("koa"),
      bodyparser = require('koa-bodyparser'),
      static = require('koa-static'),
      render = require('koa-art-template'),
+     jsonp = require('koa-jsonp'),
+     sd = require('silly-datetime'),
      path = require("path"),
-
      session = require("koa-session"),
      DB= require("./model/db.js"),
      common = require("./model/common.js");
 
 let app = new Koa();
 
+//配置koa-jsonp中间件
+app.use(jsonp());
 
 //引入 koa-veiws配置中间件
 app.use(views(
