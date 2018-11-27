@@ -95,7 +95,7 @@
             </ul>
         </li>
 
-        <li>
+        <li {{if G.url[1]=="article"}} class="open active" {{/if}}>
             <a href="#" class="dropdown-toggle">
                 <i class="icon-edit"></i>
                 <span class="menu-text"> 内容管理 </span>
@@ -104,15 +104,15 @@
             </a>
 
             <ul class="submenu">
-                <li>
-                    <a href="form-elements.html">
+                <li {{if !G.url[2]}} class="active" {{/if}}>
+                    <a href="{{__HOST__}}/admin/article">
                         <i class="icon-double-angle-right"></i>
                         内容列表
                     </a>
                 </li>
 
-                <li>
-                    <a href="form-wizard.html">
+                <li {{if G.url[2]=="add"}} class="active" {{/if}}>
+                    <a href="{{__HOST__}}/admin/article/add">
                         <i class="icon-double-angle-right"></i>
                         增加内容
                     </a>
