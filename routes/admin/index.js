@@ -45,17 +45,23 @@ router.get('/changeStatus', async (ctx)=>{
 
 //删除
 router.get("/remove", async (ctx)=>{
-    console.log(ctx.query);
-    //获取get传值id
-    let id = ctx.query.id;
-    let collectionName=ctx.query.collectionName;
-    //用过id 查询数据库
-    let removeResult = await DB.remove(collectionName,{"_id":DB.getObjectID(id)});
+    try {
+        //console.log(ctx.query);
+        //获取get传值id
+        let id = ctx.query.id;
+        let collectionName=ctx.query.collectionName;
+        //用过id 查询数据库
+        let removeResult = await DB.remove(collectionName,{"_id":DB.getObjectID(id)});
 
-    if(removeResult.result.ok){//删除成功
-        //页面跳转到用户列表
+        if(removeResult.result.ok){//删除成功
+            //页面跳转到用户列表
+            ctx.redirect(ctx.state.G.prevPage);
+        }
+    }catch(err){
         ctx.redirect(ctx.state.G.prevPage);
     }
+
+
 });
 
 
