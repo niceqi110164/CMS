@@ -8,6 +8,7 @@ let router = require("koa-router")(),
     url = require('url'),
     code = require('svg-captcha'),
     articlecate = require('./admin/articlecate.js'),
+    article = require('./admin/article.js'),
     index = require('./admin/index.js');
 
 
@@ -44,6 +45,7 @@ router.use(async (ctx,next)=>{
 router.use(index);
 
 router.use('/articlecate', articlecate);
+router.use('/article', article);
 router.use('/manager', manager);
 router.use('/login', login);
 // router.use('/news', news);
