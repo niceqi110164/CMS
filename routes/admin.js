@@ -7,7 +7,7 @@ let router = require("koa-router")(),
     login = require('./admin/login.js'),
     url = require('url'),
     code = require('svg-captcha'),
-    news = require('./admin/news.js');
+    index = require('./admin/index.js');
 
 
 //配置中间件 获取url地址
@@ -32,14 +32,12 @@ router.use(async (ctx,next)=>{
     }
 });
 
-router.get('/',async (ctx)=>{
-    await ctx.render("admin/index");
-});
+router.use(index);
 
 // router.use('/user', user);
 router.use('/manager', manager);
 router.use('/login', login);
-router.use('/news', news);
+// router.use('/news', news);
 
 
 module.exports = router.routes();
