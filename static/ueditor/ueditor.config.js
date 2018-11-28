@@ -34,19 +34,22 @@
         , serverUrl: "/admin/editorUpload"
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的重新定义
-        , toolbars: [[
-            'fullscreen', 'source', '|', 'undo', 'redo', '|',
-            'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
-            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
-            'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
-            'directionalityltr', 'directionalityrtl', 'indent', '|',
-            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
-            'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
-            'emotion', 'simpleupload', 'insertimage', 'scrawl', 'insertvideo', 'music', 'attachment','map', /*'gmap',*/  'insertframe', 'insertcode', /*'webapp',*/ 'pagebreak', 'template', 'background', '|',
-            'horizontal', 'date', 'time', 'spechars',  'wordimage', '|',
-            'inserttable', 'deletetable','preview', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
-            'print',  'searchreplace', 'drafts', 'help'
-        ]]
+        // , toolbars: [[
+        //     'fullscreen', 'source', '|', 'undo', 'redo', '|',
+        //     'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+        //     'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+        //     'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+        //     'directionalityltr', 'directionalityrtl', 'indent', '|',
+        //     'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+        //     'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+        //     'emotion', 'simpleupload', 'insertimage', 'scrawl', 'insertvideo', 'music', 'attachment','map', /*'gmap',*/  'insertframe', 'insertcode', /*'webapp',*/ 'pagebreak', 'template', 'background', '|',
+        //     'horizontal', 'date', 'time', 'spechars',  'wordimage', '|',
+        //     'inserttable', 'deletetable','preview', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
+        //     'print',  'searchreplace', 'drafts', 'help'
+        // ]]
+
+        ,toolbars: [["fullscreen","source","undo","redo","insertunorderedlist","insertorderedlist","link","unlink","help","attachment","simpleupload","insertimage","emotion","pagebreak","date","bold","italic","fontborder","strikethrough","underline","forecolor","justifyleft","justifycenter","justifyright","justifyjustify","paragraph","rowspacingbottom","rowspacingtop","lineheight","insertcode"]]
+
         //当鼠标放在工具栏上时显示的tooltip提示,留空支持自动多语言配置，否则以配置值为准
         //,labelMap:{
         //    'anchor':'', 'undo':''
