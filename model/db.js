@@ -58,15 +58,62 @@ class Db {
      * @params1 : str  collectionName  表名
      * @params2 : obj  json  查询数据
      * @return  : 返回的是异步数据
+     *
+     * DB.find("article",{})   => 返回全部数据 (2个参数)
+     *
+     * DB.find("article",{},{"title":1})  => 只返回带title属性的数据 (3个参数)
+     *
+     * DB.find('article',{},{"title":1},{  => 返回第二页只带title属性的数据 (4个参数)
+     *     page:2,
+     *     pageSize:10
+     * })
+     *
+     * db.collection(collectionName).find(json1,{fields:attr}).skip(slipNum).limit(pageSize);
      * */
-    find(collectionName,json){
+    find(collectionName,json1,json2,json3){
+        let attr =""; //声明属性
+        let slipNum = 0; // 声明跳过第几页显示
+        let pageSize = 0; // 声明显示的条数
+        let page = 0; //声明页数
+
+        if(arguments.length === 2){
+            /**
+             * db.collection(collectionName).find(json1,{fields:attr}).skip(slipNum).limit(pageSize);
+             * 当 attr={}; slipNum=0; pageSize=0; 时查询的是全部的数据
+             * */
+            attr={};
+            slipNum=0;
+            pageSize=0;
+        }else if(arguments.length === 3){
+            /**
+             * db.collection(collectionName).find(json1,{fields:attr}).skip(slipNum).limit(pageSize);
+             * 当 attr = json2; 时查询的是带json属性的全部的数据
+             * */
+            attr = json2;
+            slipNum = 0;
+            pageSize = 0;
+        }else if(arguments.length === 4){
+            /**
+             * db.collection(collectionName).find(json1,{fields:attr}).skip(slipNum).limit(pageSize);
+             * 当 attr = json2; 时查询的是带json属性的全部的数据
+             * */
+            attr = json2;
+            page = json3.page || 1; //传入的页数或者初始化为1
+            pageSize = json3.pageSize || 20; //传入每页显示的条数或者初始化为20
+            slipNum = (page-1)*pageSize; //
+        }else{
+            console.log("参数错误");
+        }
+
         //异步获取数据要用Promise
         return new Promise((resolve,reject)=>{
             //要获取connect 里面的 db对象
             //使用Promise  this.connect().then()
             this.connect().then((db)=>{
                 //获取查询结果
-                let findResult = db.collection(collectionName).find(json);
+                //let findResult = db.collection(collectionName).find(json);
+                let findResult = db.collection(collectionName).find(json1,{fields:attr}).skip(slipNum).limit(pageSize);
+
                 //把结果转化为数据
                 findResult.toArray((err,docs)=>{
                     if(err){
@@ -152,6 +199,24 @@ class Db {
     /**获取ObjectID方法*/
     getObjectID(id){
         return new ObjectID(id);
+    }
+
+    /**
+     *@method : 获取数据库总数据个数
+     *@params : str   json
+     * */
+    count(collectionName,json){
+        return new Promise((resolve,reject)=>{
+            this.connect().then((db)=>{
+                db.collection(collectionName).countDocuments(json,(err,result)=>{
+                    if(err){
+                        reject(err)
+                    }else{
+                        resolve(result)
+                    }
+                });
+            })
+        })
     }
 
 }
