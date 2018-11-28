@@ -57,6 +57,6 @@ router.use('/login', login);
 router.all('/editor/controller', ueditor(['static', {
     "imageAllowFiles": [".png", ".jpg", ".jpeg"],
     "imagePathFormat": "/upload/ueditor/image/{yyyy}{mm}{dd}/{filename}"  // 保存为原文件名
-}]))
+}]));
 
 module.exports = router.routes();
