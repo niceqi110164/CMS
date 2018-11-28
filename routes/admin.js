@@ -7,6 +7,7 @@ let router = require("koa-router")(),
     login = require('./admin/login.js'),
     url = require('url'),
     code = require('svg-captcha'),
+    ueditor=require('koa2-ueditor'),
     articlecate = require('./admin/articlecate.js'),
     article = require('./admin/article.js'),
     index = require('./admin/index.js');
@@ -50,5 +51,12 @@ router.use('/manager', manager);
 router.use('/login', login);
 // router.use('/news', news);
 
+
+//注意上传图片的路由 editor.config.js配置图片post的地址
+
+router.all('/editor/controller', ueditor(['static', {
+    "imageAllowFiles": [".png", ".jpg", ".jpeg"],
+    "imagePathFormat": "/upload/ueditor/image/{yyyy}{mm}{dd}/{filename}"  // 保存为原文件名
+}]))
 
 module.exports = router.routes();
