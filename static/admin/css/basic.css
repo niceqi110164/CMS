@@ -1,3 +1,16 @@
 .form-horizontal .form-group{
     height: 44px;
 }
+
+/*article文章页面*/
+.article-form{
+    border: 1px solid #c5d0dc;
+}
+.article-tabs{
+    height:34px;
+}
+.article-box{
+    height:380px;
+}
+
+/**end==article文章页面*/
