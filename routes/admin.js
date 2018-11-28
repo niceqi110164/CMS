@@ -54,7 +54,7 @@ router.use('/login', login);
 
 //注意上传图片的路由 editor.config.js配置图片post的地址
 
-router.all('/editor/controller', ueditor(['static', {
+router.all('/editorUpload', ueditor(['static', {
     "imageAllowFiles": [".png", ".jpg", ".jpeg"],
     "imagePathFormat": "/upload/ueditor/image/{yyyy}{mm}{dd}/{filename}"  // 保存为原文件名
 }]));
