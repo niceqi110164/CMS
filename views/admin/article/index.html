@@ -100,42 +100,42 @@
 
                             <td>
                                 {{if $value.is_host==1}}
-                                <img src="{{__ROOT__}}/admin/images/yes.gif"
+                                <img src="{{__HOST__}}/admin/images/yes.gif"
                                      onclick="app.toggle(this,'article','is_host','{{@$value._id}}')"/>
                                 {{else}}
-                                <img src="{{__ROOT__}}/admin/images/no.gif"
+                                <img src="{{__HOST__}}/admin/images/no.gif"
                                      onclick="app.toggle(this,'article','is_host','{{@$value._id}}')"/>
                                 {{/if}}
                             </td>
 
                             <td>
                                 {{if $value.is_best==1}}
-                                <img src="{{__ROOT__}}/admin/images/yes.gif"
+                                <img src="{{__HOST__}}/admin/images/yes.gif"
                                      onclick="app.toggle(this,'article','is_best','{{@$value._id}}')"/>
                                 {{else}}
-                                <img src="{{__ROOT__}}/admin/images/no.gif"
+                                <img src="{{__HOST__}}/admin/images/no.gif"
                                      onclick="app.toggle(this,'article','is_best','{{@$value._id}}')"/>
                                 {{/if}}
                             </td>
 
                             <td>
                                 {{if $value.status==1}}
-                                <img src="{{__ROOT__}}/admin/images/yes.gif"
+                                <img src="{{__HOST__}}/admin/images/yes.gif"
                                      onclick="app.toggle(this,'article','status','{{@$value._id}}')"/>
                                 {{else}}
-                                <img src="{{__ROOT__}}/admin/images/no.gif"
+                                <img src="{{__HOST__}}/admin/images/no.gif"
                                      onclick="app.toggle(this,'article','status','{{@$value._id}}')"/>
                                 {{/if}}
                             </td>
                             <td>
-                                <a href="{{__ROOT__}}/admin/article/edit?id={{@$value._id}}">
+                                <a href="{{__HOST__}}/admin/article/edit?id={{@$value._id}}">
                                     <button class="btn btn-xs btn-info">
                                         <i class="icon-edit bigger-120"></i>
                                     </button>
                                 </a>
                                 &nbsp;&nbsp;
                                 <a class="delete"
-                                   href="{{__ROOT__}}/admin/delete?collection=article&id={{@$value._id}}">
+                                   href="{{__HOST__}}/admin/remove?collectionName=article&id={{@$value._id}}">
                                     <button class="btn btn-xs btn-danger">
                                         <i class="icon-trash bigger-120"></i>
                                     </button>
